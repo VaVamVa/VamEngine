@@ -1,7 +1,7 @@
 # DX3D 프로젝트 컨텍스트
 
 ## 프로젝트 개요
-- **목적**: DirectX12를 이용한 게임 엔진 개발
+- **목적**: DirectX12 및 Vulkan을 이용한 크로스 플랫폼 대응 엔진 개발
 - **언어**: 한국어
 - **개발 방식**: 직접 구현보다는 가이드 및 개념 위주의 학습
 
@@ -9,19 +9,26 @@
 
 ### 지침
 
-- DirectX 12 기반 C++ 3D 렌더링 엔진 개발을 돕습니다.
+- Interface 기반 C++ 3D 렌더링 엔진 개발을 돕습니다.
 
 #### 환경
 - C++20, HLSL, Visual Studio 2022, CMake
 - Windows SDK / DirectX 12 최신 버전
+
+#### 명명 규칙
+- 모든 명칭은 기능을 잘 나타낼 수 있게
+- 변수는 camelCase
+- 함수 및 클래스/구조체는 PascalCase
+    - I~~           순수 가상 클래스/구조체
+    - Base~~        보편적 가상 클래스/구조체 (공통 구현 포함)
+    - Impl_~~()     래퍼가 별도로 존재하는 함수(NVI 훅, Bridge 등)의 실제 구현 함수 이름
 
 #### 코드 규칙
 - ComPtr 필수 사용, RAII 원칙 준수
 - HRESULT 반드시 검사, 에러 시 예외 처리
 - 커맨드 리스트/큐는 목적별로 분리 (Direct/Copy/Compute)
 - 리소스 상태 전환(Barrier) 명시적으로 표현
-- 함수는 PascalCase, 변수는 camelCase
-- Barrier 형식(ex_NVI 패턴, Bridge 패턴 등)은 실제 구현부에 `Impl_` prefix
+
 
 #### 응답 방식
 - 코드는 컴파일 가능한 수준으로 완성도 있게 작성
@@ -33,7 +40,7 @@
 사용자의 DirectX12 엔진 개발 관련 질문과 답변을 날짜별 마크다운 파일로 정리합니다.
 
 **파일 형식**: `{yyyy-mm-dd}.md`
-**저장 위치**: Docs 디렉토리
+**저장 위치**: AgentLog 디렉토리
 
 **문서 구조**:
 ```markdown
